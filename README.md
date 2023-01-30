@@ -112,9 +112,9 @@
           initEcharts(param);
         })
       }
-      
-      
-//或者使用原生方式
+    
+    
+    > //或者使用原生方式
     //展示对应的省
     showProvince(eName, param) {
       let xmlhttp = new XMLHttpRequest();
