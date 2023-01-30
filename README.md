@@ -112,4 +112,50 @@
           initEcharts(param);
         })
       }
+      
+      
+//或者使用原生方式
+    //展示对应的省
+    showProvince(eName, param) {
+      let xmlhttp = new XMLHttpRequest();
+      let that = this;
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            let resData = xmlhttp.responseText;
+            that.$echarts.registerMap(param, resData);
+            that.mapName = param;
+            that.mapChart();
+          } else if (xmlhttp.status == 400) {
+            alert('There was an error 400');
+          } else {
+            alert('something else other than 200 was returned');
+          }
+        }
+      };
+      xmlhttp.open('GET', `/map/province/${eName}.json`, true);
+      xmlhttp.send();
+    },
 
+    //展示对应市
+    showCitys(cName, param) {
+      let xmlhttp = new XMLHttpRequest();
+      let that = this;
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            let resData = xmlhttp.responseText;
+            that.$echarts.registerMap(param, resData);
+            that.mapName = param;
+            that.mapChart();
+          } else if (xmlhttp.status == 400) {
+            alert('There was an error 400');
+          } else {
+            alert('something else other than 200 was returned');
+          }
+        }
+      };
+
+      xmlhttp.open('GET', `/map/city/${cName}.json`, true);
+      xmlhttp.send();
+    },
