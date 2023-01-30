@@ -124,9 +124,9 @@
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
           if (xmlhttp.status == 200) {
             let resData = xmlhttp.responseText;
-            that.$echarts.registerMap(param, resData);
-            that.mapName = param;
-            that.mapChart();
+            that.$echarts.registerMap(param, data);
+            alert("省")
+            initEcharts(param);
           } else if (xmlhttp.status == 400) {
             alert('There was an error 400');
           } else {
@@ -146,9 +146,9 @@
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
           if (xmlhttp.status == 200) {
             let resData = xmlhttp.responseText;
-            that.$echarts.registerMap(param, resData);
-            that.mapName = param;
-            that.mapChart();
+            that.$echarts.registerMap(param, data);
+            alert("县")
+            initEcharts(param);
           } else if (xmlhttp.status == 400) {
             alert('There was an error 400');
           } else {
