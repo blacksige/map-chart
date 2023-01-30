@@ -91,6 +91,7 @@
 
 > 四. 渲染 map
 
+      //使用jquery读取
       //展示对应的省
       function showProvince(eName,param) {
         console.log(eName, param)
@@ -114,7 +115,7 @@
       }
     
     
-    > //或者使用原生方式
+    //或者使用原生方式
     //展示对应的省
     showProvince(eName, param) {
       let xmlhttp = new XMLHttpRequest();
