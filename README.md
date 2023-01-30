@@ -2,7 +2,7 @@
 >
 >
 本demo中有三个图例，分别是三层下钻地图、横向柱状图、三层下钻地图的升级版（添加了阴影、数据饼图等等功能）
-值得注意的是对于地图json数据的读取，可以采用jqery中的$.getJSON和js原生的XMLHttpRequest()方法。除此之外还要注意json文件的路径问题。
+值得注意的是对于地图json数据的读取，可以采用jquery中的$.getJSON和js原生的XMLHttpRequest()方法。除此之外还要注意json文件的路径问题。
 >
 步骤如下：
 > 一.    首先初始化全国 map。
