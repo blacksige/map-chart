@@ -2,7 +2,7 @@
 >
 >
 本demo中有三个图例，分别是三层下钻地图、横向柱状图、三层下钻地图的升级版（添加了阴影、数据饼图等等功能）
-值得注意的是对于地图json数据的读取，可以采用jqery中的$.getJSON和js原生的XMLHttpRequest()方法。除此之外还要注意json文件的路径问题。
+值得注意的是对于地图json数据的读取，可以采用jquery中的$.getJSON和js原生的XMLHttpRequest()方法。除此之外还要注意json文件的路径问题。
 >
 步骤如下：
 > 一.    首先初始化全国 map。
@@ -91,6 +91,7 @@
 
 > 四. 渲染 map
 
+      //使用jquery读取
       //展示对应的省
       function showProvince(eName,param) {
         console.log(eName, param)
@@ -112,4 +113,50 @@
           initEcharts(param);
         })
       }
+    
+    
+    //或者使用原生方式
+    //展示对应的省
+    showProvince(eName, param) {
+      let xmlhttp = new XMLHttpRequest();
+      let that = this;
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            let resData = xmlhttp.responseText;
+            that.$echarts.registerMap(param, data);
+            alert("省")
+            initEcharts(param);
+          } else if (xmlhttp.status == 400) {
+            alert('There was an error 400');
+          } else {
+            alert('something else other than 200 was returned');
+          }
+        }
+      };
+      xmlhttp.open('GET', `/map/province/${eName}.json`, true);
+      xmlhttp.send();
+    },
 
+    //展示对应市
+    showCitys(cName, param) {
+      let xmlhttp = new XMLHttpRequest();
+      let that = this;
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            let resData = xmlhttp.responseText;
+            that.$echarts.registerMap(param, data);
+            alert("县")
+            initEcharts(param);
+          } else if (xmlhttp.status == 400) {
+            alert('There was an error 400');
+          } else {
+            alert('something else other than 200 was returned');
+          }
+        }
+      };
+
+      xmlhttp.open('GET', `/map/city/${cName}.json`, true);
+      xmlhttp.send();
+    },
